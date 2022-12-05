@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
 }
 
 .container {
@@ -66,4 +67,22 @@
   align-items: center;
   font-size: 1.2rem;
   color: #a1a1a1;
+}
+
+/* NotFound */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #555555;
+  min-height: 80vh;
+}
+
+.not-found h2 {
+  font-size: 3.5rem;
+}
+
+.not-found p {
+  font-size: 1.5rem;
 }
