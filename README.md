@@ -6,6 +6,9 @@
 
 - ReactJS
   - react-router-dom
+  - @reduxjs/toolkit
+  - react-redux
+  - axios
 
 cd frontend `npm start`
 
