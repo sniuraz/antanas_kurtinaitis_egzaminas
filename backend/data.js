@@ -1,6 +1,6 @@
 const products = [
   {
-    _id: '1',
+    id: '1',
     image:
       'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true',
     name: 'laptop1',
@@ -9,7 +9,7 @@ const products = [
     price: '500',
   },
   {
-    _id: '2',
+    id: '2',
     image:
       'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true',
     name: 'laptop2',
@@ -18,7 +18,7 @@ const products = [
     price: '600',
   },
   {
-    _id: '3',
+    id: '3',
     image:
       'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true',
     name: 'laptop3',
@@ -27,7 +27,7 @@ const products = [
     price: '700',
   },
   {
-    _id: '4',
+    id: '4',
     image:
       'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true',
     name: 'laptop4',
@@ -36,7 +36,7 @@ const products = [
     price: '800',
   },
   {
-    _id: '5',
+    id: '5',
     image:
       'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true',
     name: 'laptop5',
@@ -45,7 +45,7 @@ const products = [
     price: '900',
   },
   {
-    _id: '6',
+    id: '6',
     image:
       'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true',
     name: 'laptop6',

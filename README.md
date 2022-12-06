@@ -9,6 +9,7 @@
   - @reduxjs/toolkit
   - react-redux
   - axios
+  - react-toastify
 
 cd frontend `npm start`
 
