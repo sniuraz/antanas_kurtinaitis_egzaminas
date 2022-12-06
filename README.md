@@ -19,5 +19,11 @@ cd frontend `npm start`
   - express
   - cors
   - nodemon
+  - mongoose
+  - dotenv
 
 cd backend `npm start`
+
+## Database
+
+- mongoDB
