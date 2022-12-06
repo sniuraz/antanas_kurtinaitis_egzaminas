@@ -6,6 +6,8 @@ import Main from './components/Main';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/not-found' element={<NotFound />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

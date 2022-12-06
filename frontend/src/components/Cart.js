@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from '../slices/cartSlice';
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getTotals());
@@ -92,7 +94,13 @@ export default function Cart() {
                   <span className='amount'>{cart.cartTotalAmount} &euro;</span>
                 </div>
                 <p>Mokesčiai ir siuntimas apskaičiuojami atsiskaitant</p>
-                <button>Pasitikrinti</button>
+                {auth._id ? (
+                  <button className='cart-login' onClick={() => navigate('/login')}>
+                    Pasitikrinti
+                  </button>
+                ) : (
+                  <button>Prisijungti pasitikrinti</button>
+                )}
 
                 <div className='continue-shopping'>
                   <Link to='/'>

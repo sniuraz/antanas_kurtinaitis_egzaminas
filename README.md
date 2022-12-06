@@ -10,6 +10,7 @@
   - react-redux
   - axios
   - react-toastify
+  - jwt-decode
 
 cd frontend `npm start`
 
@@ -21,9 +22,17 @@ cd frontend `npm start`
   - nodemon
   - mongoose
   - dotenv
+  - jsonwebtoken
+  - bcrypt
+  - joi
 
 cd backend `npm start`
 
 ## Database
 
 - mongoDB
+
+## Style
+
+- css
+- styled-components

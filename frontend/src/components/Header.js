@@ -1,8 +1,13 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import styled from 'styled-components';
+import { logoutUser } from '../slices/authSlice';
 
 export default function Header() {
-  const {cartTotalQuantity} = useSelector(state => state.cart);
+  const dispatch = useDispatch();
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
 
   return (
     <div className='header'>
@@ -28,8 +33,36 @@ export default function Header() {
               </span>
             </div>
           </Link>
+          {auth._id ? (
+            <Logout
+              onClick={() => {
+                dispatch(logoutUser(null));
+                toast.warning('Vartotojas atsijungė', { position: 'bottom-center' });
+              }}
+            >
+              Atsijungti
+            </Logout>
+          ) : (
+            <AuthLinks>
+              <Link to='/login'>Prisijungti</Link>
+              <Link to='/register'>Registruotis</Link>
+            </AuthLinks>
+          )}
         </nav>
       </div>
     </div>
   );
 }
+
+const AuthLinks = styled.div`
+  a {
+    &:last-child {
+      margin-left: 2rem;
+    }
+  }
+`;
+
+const Logout = styled.div`
+  color: #ffffff;
+  cursor: pointer;
+`;

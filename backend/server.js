@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const register = require('./routes/register');
+const login = require('./routes/login');
 
 const products = require('./data');
 
@@ -10,6 +12,9 @@ require('dotenv').config();
 
 app.use(express.json());
 app.use(cors());
+
+app.use('/api/register', register);
+app.use('/api/login', login);
 
 app.get('/', (req, res) => {
   res.send('Sveiki užsukę į shopifis');
