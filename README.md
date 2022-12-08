@@ -25,12 +25,17 @@ cd frontend `npm start`
   - jsonwebtoken
   - bcrypt
   - joi
+  - cloudinary
 
 cd backend `npm start`
 
 ## Database
 
 - mongoDB
+
+## Image Database
+
+- cloudinary
 
 ## Style
 

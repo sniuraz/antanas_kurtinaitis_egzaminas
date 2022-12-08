@@ -1,9 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../slices/cartSlice';
-import { useGetAllProductsQuery } from '../slices/productsApi';
 
 export default function Main() {
-  const { data, error, isLoading } = useGetAllProductsQuery();
+  const { items: data, status } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
 
@@ -14,27 +13,28 @@ export default function Main() {
   return (
     <div className='container'>
       <div className='home-container'>
-        {isLoading ? (
-          <p>Įkeliama...</p>
-        ) : error ? (
-          <p>Įvyko klaida...</p>
-        ) : (
+        {status === 'success' ? (
           <>
             <h2>Naujos prekės</h2>
             <div className='products'>
-              {data?.map((product) => (
-                <div key={product.id} className='product'>
-                  <h3>{product.name}</h3>
-                  <img src={product.image} alt={product.name} />
-                  <div className='details'>
-                    <span>{product.desc}</span>
-                    <span className='price'>{product.price} &euro;</span>
+              {data &&
+                data?.map((product) => (
+                  <div key={product._id} className='product'>
+                    <h3>{product.name}</h3>
+                    <img src={product.image.url} alt={product.name} />
+                    <div className='details'>
+                      <span>{product.desc}</span>
+                      <span className='price'>{product.price} &euro;</span>
+                    </div>
+                    <button onClick={() => handleAddToCart(product)}>Į krepšelį</button>
                   </div>
-                  <button onClick={() => handleAddToCart(product)}>Į krepšelį</button>
-                </div>
-              ))}
+                ))}
             </div>
           </>
+        ) : status === 'pending' ? (
+          <p>Kraunasi...</p>
+        ) : (
+          <p>Netikėta klaida...</p>
         )}
       </div>
     </div>

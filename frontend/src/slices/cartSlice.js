@@ -12,7 +12,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
+      const itemIndex = state.cartItems.findIndex((item) => item._id === action.payload._id);
 
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].cartQuantity += 1;
@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
     removeFromCart(state, action) {
-      const nextCartItems = state.cartItems.filter((cartItem) => cartItem.id !== action.payload.id);
+      const nextCartItems = state.cartItems.filter((cartItem) => cartItem._id !== action.payload._id);
       state.cartItems = nextCartItems;
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
 
@@ -38,7 +38,7 @@ const cartSlice = createSlice({
       });
     },
     decreaseCart(state, action) {
-      const itemIndex = state.cartItems.findIndex((cartItem) => cartItem.id === action.payload.id);
+      const itemIndex = state.cartItems.findIndex((cartItem) => cartItem._id === action.payload._id);
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
         state.cartItems[itemIndex].cartQuantity -= 1;
@@ -47,7 +47,7 @@ const cartSlice = createSlice({
           position: 'bottom-center',
         });
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
-        const nextCartItems = state.cartItems.filter((cartItem) => cartItem.id !== action.payload.id);
+        const nextCartItems = state.cartItems.filter((cartItem) => cartItem._id !== action.payload._id);
         state.cartItems = nextCartItems;
 
         toast.error(`${action.payload.name} pašalintas iš krepšelio`, {

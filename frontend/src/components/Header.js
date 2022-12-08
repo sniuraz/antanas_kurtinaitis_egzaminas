@@ -34,14 +34,21 @@ export default function Header() {
             </div>
           </Link>
           {auth._id ? (
-            <Logout
-              onClick={() => {
-                dispatch(logoutUser(null));
-                toast.warning('Vartotojas atsijungė', { position: 'bottom-center' });
-              }}
-            >
-              Atsijungti
-            </Logout>
+            <Links>
+              {auth.isAdmin ? (
+                <div>
+                  <Link to='/admin/products'>Admin</Link>
+                </div>
+              ) : null}
+              <div
+                onClick={() => {
+                  dispatch(logoutUser(null));
+                  toast.warning('Vartotojas atsijungė', { position: 'bottom-center' });
+                }}
+              >
+                Atsijungti
+              </div>
+            </Links>
           ) : (
             <AuthLinks>
               <Link to='/login'>Prisijungti</Link>
@@ -62,7 +69,15 @@ const AuthLinks = styled.div`
   }
 `;
 
-const Logout = styled.div`
-  color: #ffffff;
-  cursor: pointer;
+const Links = styled.div`
+  color: white;
+  display: flex;
+
+  div {
+    cursor: pointer;
+
+    &:last-child {
+      margin-left: 2rem;
+    }
+  }
 `;
