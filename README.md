@@ -11,6 +11,10 @@
   - axios
   - react-toastify
   - jwt-decode
+  - @mui/x-data-grid
+  - @mui/material
+  - @emotion/react
+  - @emotion/styled
 
 cd frontend `npm start`
 
@@ -26,6 +30,7 @@ cd frontend `npm start`
   - bcrypt
   - joi
   - cloudinary
+  - react-icons
 
 cd backend `npm start`
 
@@ -41,3 +46,4 @@ cd backend `npm start`
 
 - css
 - styled-components
+- react-icons

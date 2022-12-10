@@ -11,6 +11,10 @@ import Login from './components/auth/Login';
 import Dashboard from './components/admin/Dashboard';
 import Products from './components/admin/Products';
 import CreateProduct from './components/admin/CreateProduct';
+import ProductsList from './components/admin/list/ProductsList';
+import Users from './components/admin/Users';
+import Product from './components/Details/Product';
+import User from './components/Details/User';
 
 function App() {
   return (
@@ -23,10 +27,14 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/product/:id' element={<Product />} />
+          <Route path='/user/:id' element={<User />} />
           <Route path='/admin' element={<Dashboard />}>
             <Route path='products' element={<Products />}>
+              <Route index element={<ProductsList />} />
               <Route path='create-product' element={<CreateProduct />} />
             </Route>
+            <Route path='users' element={<Users />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>

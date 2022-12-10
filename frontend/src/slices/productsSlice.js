@@ -7,6 +7,8 @@ const initialState = {
   items: [],
   status: null,
   createStatus: null,
+  editStatus: null,
+  deleteStatus: null,
 };
 
 export const productsFetch = createAsyncThunk('products/productsFetch', async () => {
@@ -22,6 +24,32 @@ export const productsFetch = createAsyncThunk('products/productsFetch', async ()
 export const productsCreate = createAsyncThunk('products/productsCreate', async (values) => {
   try {
     const response = await axios.post(`${url}/products`, values, setHeaders());
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response?.data, {
+      position: 'bottom-center',
+    });
+  }
+});
+
+export const productsEdit = createAsyncThunk('products/productsEdit', async (values) => {
+  try {
+    const response = await axios.put(`${url}/products/${values.product._id}`, values, setHeaders());
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response?.data, {
+      position: 'bottom-center',
+    });
+  }
+});
+
+export const productsDelete = createAsyncThunk('products/productsDelete', async (id) => {
+  try {
+    const response = await axios.delete(`${url}/products/${id}`, setHeaders());
 
     return response.data;
   } catch (error) {
@@ -59,6 +87,38 @@ const productsSlice = createSlice({
     },
     [productsCreate.rejected]: (state, action) => {
       state.createStatus = 'rejected';
+    },
+    //
+    [productsEdit.pending]: (state, action) => {
+      state.editStatus = 'pending';
+    },
+    [productsEdit.fulfilled]: (state, action) => {
+      const updatedProducts = state.items.map((product) =>
+        product._id === action.payload._id ? action.payload : product
+      );
+      state.items = updatedProducts;
+      state.editStatus = 'success';
+      toast.success('Prekė atnaujinta!', {
+        position: 'bottom-center',
+      });
+    },
+    [productsEdit.rejected]: (state, action) => {
+      state.editStatus = 'rejected';
+    },
+    //
+    [productsDelete.pending]: (state, action) => {
+      state.deleteStatus = 'pending';
+    },
+    [productsDelete.fulfilled]: (state, action) => {
+      const newList = state.items.filter((item) => item._id !== action.payload._id);
+      state.items = newList;
+      state.deleteStatus = 'success';
+      toast.error('Prekė ištrinta!', {
+        position: 'bottom-center',
+      });
+    },
+    [productsDelete.rejected]: (state, action) => {
+      state.deleteStatus = 'rejected';
     },
   },
 });

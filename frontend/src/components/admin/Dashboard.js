@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { FaUsers, FaStore } from 'react-icons/fa';
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);
@@ -11,8 +12,11 @@ const Dashboard = () => {
     <StyledDashboard>
       <SideNav>
         <h3>Greiti pasirinkimai</h3>
-        <NavLink className={(isActive) => (isActive ? 'link-active' : 'link-inactive')} to='/admin/products'>
-          Prekės
+        <NavLink className={({ isActive }) => (isActive ? 'link-active' : 'link-inactive')} to='/admin/products'>
+          <FaStore /> Prekės
+        </NavLink>
+        <NavLink className={({ isActive }) => (isActive ? 'link-active' : 'link-inactive')} to='/admin/users'>
+          <FaUsers /> Vartotojai
         </NavLink>
       </SideNav>
       <Content>
@@ -50,6 +54,14 @@ const SideNav = styled.div`
     text-decoration: none;
     margin-bottom: 1rem;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+
+    svg {
+      margin-right: 0.5rem;
+      font-size: 18px;
+    }
   }
 `;
 
