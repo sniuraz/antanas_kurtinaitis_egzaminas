@@ -95,11 +95,11 @@ export default function Cart() {
                 </div>
                 <p>Mokesčiai ir siuntimas apskaičiuojami atsiskaitant</p>
                 {auth._id ? (
-                  <button className='cart-login' onClick={() => navigate('/login')}>
-                    Pasitikrinti
+                  <button className='cart-login' onClick={() => navigate('/checkout-success')}>
+                    Pirkti
                   </button>
                 ) : (
-                  <button>Prisijungti pasitikrinti</button>
+                  <button onClick={() => navigate('/login')}>Prisijungti norint apsipirkti</button>
                 )}
 
                 <div className='continue-shopping'>

@@ -12,7 +12,6 @@ const User = () => {
     name: '',
     email: '',
     isAdmin: false,
-    password: '',
   });
 
   const [loading, setLoading] = useState(false);
@@ -26,7 +25,6 @@ const User = () => {
 
         setUser({
           ...res.data,
-          password: '',
         });
       } catch (err) {
         console.log(err);
@@ -77,13 +75,6 @@ const User = () => {
               id='email'
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-            />
-            <label htmlFor='name'>Slaptažodis:</label>
-            <input
-              type='text'
-              id='password'
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
             <button>{updating ? 'Naujinama' : 'Atnaujinti profilį'}</button>
           </form>

@@ -3,8 +3,6 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { productsDelete } from '../../../slices/productsSlice';
-// import EditProduct from '../EditProduct';
 import { useEffect } from 'react';
 import { userDelete, usersFetch } from '../../../slices/usersSlice';
 

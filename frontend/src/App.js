@@ -15,6 +15,7 @@ import ProductsList from './components/admin/list/ProductsList';
 import Users from './components/admin/Users';
 import Product from './components/Details/Product';
 import User from './components/Details/User';
+import CheckoutSuccess from './components/CheckoutSuccess';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout-success' element={<CheckoutSuccess />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/product/:id' element={<Product />} />
