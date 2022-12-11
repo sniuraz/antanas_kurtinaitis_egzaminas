@@ -1,64 +1,60 @@
 import styled from 'styled-components';
+import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { productsDelete } from '../../../slices/productsSlice';
-import EditProduct from '../EditProduct';
+// import { productsDelete } from '../../../slices/productsSlice';
+// import EditProduct from '../EditProduct';
+import { useEffect } from 'react';
+import { userDelete, usersFetch } from '../../../slices/usersSlice';
 
-export default function ProductsList() {
+export default function UsersList() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { list } = useSelector((state) => state.users);
 
-  const { items } = useSelector((state) => state.products);
+  useEffect(() => {
+    dispatch(usersFetch());
+    
+  }, [dispatch]);
 
   const rows =
-    items &&
-    items.map((item) => {
+    list &&
+    list.map((user) => {
       return {
-        id: item._id,
-        imageUrl: item.image.url,
-        pName: item.name,
-        pDesc: item.desc,
-        price: item.price.toLocaleString(),
+        id: user._id,
+        uName: user.name,
+        uEmail: user.email,
+        isAdmin: user.isAdmin,
       };
     });
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 220 },
     {
-      field: 'imageUrl',
-      headerName: 'Paveikslėlis',
-      width: 100,
-      renderCell: (params) => {
-        return (
-          <ImageContainer>
-            <img src={params.row.imageUrl} alt='' />
-          </ImageContainer>
-        );
-      },
+      field: 'uName',
+      headerName: 'Vartotojo vardas',
+      width: 150,
     },
-    { field: 'pName', headerName: 'Pavadinimas', width: 130 },
+    { field: 'uEmail', headerName: 'El. paštas', width: 200 },
     {
-      field: 'pDesk',
-      headerName: 'Aprašymas',
+      field: 'isAdmin',
+      headerName: 'Pareigos',
       width: 130,
-    },
-    {
-      field: 'price',
-      headerName: 'Kaina',
-      width: 80,
+      renderCell: (params) => {
+        return <div>{params.row.isAdmin ? <Admin>Administratorius</Admin> : <Customer>Paprastas narys</Customer>}</div>;
+      },
     },
     {
       field: 'actions',
       headerName: 'Veiksmai',
       sortable: false,
-      width: 200,
+      width: 150,
       renderCell: (params) => {
         return (
           <Actions>
             <Delete onClick={() => handleDelete(params.row.id)}>Ištrinti</Delete>
-            <EditProduct prodId={params.row.id} />
-            <View onClick={() => navigate(`/product/${params.row.id}`)}>Peržiūrėti</View>
+            <View onClick={() => navigate(`/user/${params.row.id}`)}>Peržiūrėti</View>
           </Actions>
         );
       },
@@ -66,7 +62,7 @@ export default function ProductsList() {
   ];
 
   const handleDelete = (id) => {
-    dispatch(productsDelete(id));
+    dispatch(userDelete(id));
   };
 
   return (
@@ -83,14 +79,6 @@ export default function ProductsList() {
   );
 }
 
-const ImageContainer = styled.div`
-  img {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    margin: auto;
-  }
-`;
 const Actions = styled.div`
   width: 100%;
   display: flex;
@@ -112,4 +100,20 @@ const Delete = styled.button`
 
 const View = styled.button`
   background-color: rgb(114, 225, 40);
+`;
+
+const Admin = styled.div`
+  color: rgb(253, 181, 40);
+  background: rgba(253, 181, 40, 0.12);
+  padding: 3px 5px;
+  border-radius: 3px;
+  font-size: 14px;
+`;
+
+const Customer = styled.div`
+  color: rgb(38, 198, 249);
+  background-color: rgba(38, 198, 249, 0.12);
+  padding: 3px 5px;
+  border-radius: 3px;
+  font-size: 14px;
 `;

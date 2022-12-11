@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const register = require('./routes/register');
 const login = require('./routes/login');
 const productsRoute = require('./routes/products');
+const usersRoute = require('./routes/users');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use('/api/register', register);
 app.use('/api/login', login);
 app.use('/api/products', productsRoute);
+app.use('/api/users', usersRoute);
 
 app.get('/', (req, res) => {
   res.send('Sveiki užsukę į shopifis');

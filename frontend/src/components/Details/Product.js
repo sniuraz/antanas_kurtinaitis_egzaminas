@@ -28,7 +28,7 @@ const Product = () => {
     }
 
     fetchData();
-  }, []);
+  }, [params.id]);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
