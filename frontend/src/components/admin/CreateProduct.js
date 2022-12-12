@@ -54,10 +54,8 @@ const CreateProduct = () => {
         <input type='file' accept='image/' onChange={handleProductImageUpload} required />
         <input type='text' placeholder='Prekės ženklas' onChange={(e) => setBrand(e.target.value)} required />
         <input type='text' placeholder='Pavadinimas' onChange={(e) => setName(e.target.value)} required />
-        <input type='text' placeholder='Kaina' onChange={(e) => setPrice(e.target.value)} required />
+        <input type='number' placeholder='Kaina' onChange={(e) => setPrice(e.target.value)} required />
         <input type='text' placeholder='Apibūdinimas' onChange={(e) => setDesc(e.target.value)} required />
-
-        {/* <PrimaryButton type='submit'>Kurti</PrimaryButton> */}
         <PrimaryButton type='submit'>{createStatus === 'pending' ? 'Submitting' : 'Submit'}</PrimaryButton>
       </StyledForm>
       <ImagePreview>

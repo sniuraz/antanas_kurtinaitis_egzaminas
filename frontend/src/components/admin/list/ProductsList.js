@@ -39,14 +39,14 @@ export default function ProductsList() {
     },
     { field: 'pName', headerName: 'Pavadinimas', width: 130 },
     {
-      field: 'pDesk',
+      field: 'pDesc',
       headerName: 'Aprašymas',
       width: 130,
     },
     {
       field: 'price',
       headerName: 'Kaina',
-      width: 80,
+      width: 90,
     },
     {
       field: 'actions',

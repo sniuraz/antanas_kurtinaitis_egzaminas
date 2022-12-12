@@ -82,6 +82,7 @@ const ProductContainer = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 5px;
   padding: 2rem;
+  padding-bottom: 4rem;
 `;
 
 const ImageContainer = styled.div`

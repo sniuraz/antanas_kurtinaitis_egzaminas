@@ -88,7 +88,6 @@ const productsSlice = createSlice({
     [productsCreate.rejected]: (state, action) => {
       state.createStatus = 'rejected';
     },
-    //
     [productsEdit.pending]: (state, action) => {
       state.editStatus = 'pending';
     },
@@ -105,7 +104,6 @@ const productsSlice = createSlice({
     [productsEdit.rejected]: (state, action) => {
       state.editStatus = 'rejected';
     },
-    //
     [productsDelete.pending]: (state, action) => {
       state.deleteStatus = 'pending';
     },

@@ -47,7 +47,6 @@ const usersSlice = createSlice({
     [usersFetch.rejected]: (state, action) => {
       state.status = 'rejected';
     },
-    //
     [userDelete.pending]: (state, action) => {
       state.deleteStatus = 'pending';
     },
