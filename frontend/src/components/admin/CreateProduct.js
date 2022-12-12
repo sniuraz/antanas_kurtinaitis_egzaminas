@@ -1,19 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { productsCreate } from '../../slices/productsSlice';
 import { PrimaryButton } from './CommonStyled';
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
+  const { createStatus } = useSelector((state) => state.products);
 
   const [productImg, setProductImg] = useState('');
   const [name, setName] = useState('');
   const [brand, setBrand] = useState('');
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
-
-  console.log(productImg);
 
   const handleProductImageUpload = (e) => {
     const file = e.target.files[0];
@@ -57,7 +56,9 @@ const CreateProduct = () => {
         <input type='text' placeholder='Pavadinimas' onChange={(e) => setName(e.target.value)} required />
         <input type='text' placeholder='Kaina' onChange={(e) => setPrice(e.target.value)} required />
         <input type='text' placeholder='Apibūdinimas' onChange={(e) => setDesc(e.target.value)} required />
-        <PrimaryButton type='submit'>Kurti</PrimaryButton>
+
+        {/* <PrimaryButton type='submit'>Kurti</PrimaryButton> */}
+        <PrimaryButton type='submit'>{createStatus === 'pending' ? 'Submitting' : 'Submit'}</PrimaryButton>
       </StyledForm>
       <ImagePreview>
         {productImg ? (
@@ -65,7 +66,7 @@ const CreateProduct = () => {
             <img src={productImg} alt='prekės paveikslėlis' />
           </>
         ) : (
-          <p>čia bus rodomas paveikslėlis</p>
+          <p>Čia bus rodomas paveikslėlis</p>
         )}
       </ImagePreview>
     </StyledCreateProduct>

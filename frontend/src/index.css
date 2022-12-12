@@ -8,25 +8,33 @@
   font-family: 'Nunito', sans-serif;
 }
 
+html {
+  background-color: #f1f1f1;
+}
+
 .container {
   width: 64rem;
   max-width: 100%;
   margin: 0 auto;
+  background-color: #e1e1e1;
 }
 
 /* Header */
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
   background-color: #203040;
 }
 
 .nav-bar {
-  position: sticky;
-  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 4.5rem;
   padding: 0 1rem;
+  background-color: #203040;
 }
 
 .nav-bar a {
@@ -56,12 +64,25 @@
 /* Main */
 .home-container {
   padding: 2rem 4rem;
+  margin-top: 6.5rem;
 }
 
 .home-container h2 {
   font-size: 2.5rem;
   font-weight: 400;
   text-align: center;
+}
+
+.banners {
+  height: 10rem;
+  background-color: #a1a1a1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banners p {
+  font-size: 4rem;
 }
 
 .products {
@@ -72,6 +93,7 @@
 }
 
 .product {
+  background-color: #f1f1f1;
   width: 16rem;
   max-width: 100%;
   height: 20rem;
@@ -82,6 +104,7 @@
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: box-shadow 0.5s;
 }
 
 .product:hover {
@@ -91,9 +114,7 @@
 
 .product img {
   width: 100%;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1rem auto auto;
 }
 
 .product h3 {
@@ -125,6 +146,7 @@
   background-color: #203040;
   color: #ffffff;
   letter-spacing: 1.15px;
+  transition: box-shadow 0.5s;
 }
 
 .product-add-to-cart {
@@ -144,6 +166,7 @@
 /* Cart */
 .cart-container {
   padding: 2rem 4rem;
+  margin-top: 8.5rem;
 }
 
 .cart-container h2 {
@@ -298,13 +321,13 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: #a1a1a1;
+  background-color: #203040;
   color: #ffffff;
   letter-spacing: 1.15px;
 }
 
 .cart-checkout button:hover {
-  background-color: red;
+  background-color: #a1a1a1;
 }
 
 .start-shopping,
@@ -352,12 +375,13 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding-bottom: 1rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
   color: #a1a1a1;
+  background-color: #f1f1f1;
 }
 
 /* NotFound */
@@ -376,4 +400,38 @@
 
 .not-found p {
   font-size: 1.5rem;
+}
+
+/* Responsive */
+
+@media (max-width: 665px) {
+  /* NavBar */
+  .nav-bar {
+    padding: 0 1rem;
+  }
+  .nav-bar h2 {
+    font-size: 30px;
+  }
+
+  /* Cart */
+  .cart-container {
+    padding: 2rem;
+  }
+  .cart-container .titles {
+    display: none;
+  }
+  .cart-item,
+  .cart-container .titles {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+  .cart-item .cart-product-total-price {
+    justify-self: left;
+  }
+  .cart-summary {
+    flex-direction: column;
+  }
+  .cart-summary .clear-btn {
+    margin-bottom: 2rem;
+  }
 }

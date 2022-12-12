@@ -31,6 +31,7 @@ export default Dashboard;
 const StyledDashboard = styled.div`
   display: flex;
   height: 100vh;
+  margin-top: 6.5rem;
 `;
 
 const SideNav = styled.div`

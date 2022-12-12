@@ -9,7 +9,7 @@ export default function Main() {
       <div className='home-container'>
         {status === 'success' ? (
           <>
-            <h2>Naujos prekės</h2>
+            <div className='banners'><p>Reklama</p></div>
             <div className='products'>
               {data &&
                 data?.map((product) => (
@@ -22,9 +22,11 @@ export default function Main() {
                       <span>{product.desc}</span>
                       <span className='price'>{product.price} &euro;</span>
                     </div>
+                    
                   </div>
                 ))}
             </div>
+            <div className='banners'><p>Reklama</p></div>
           </>
         ) : status === 'pending' ? (
           <p>Kraunasi...</p>

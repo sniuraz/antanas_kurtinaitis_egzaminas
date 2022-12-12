@@ -3,7 +3,11 @@ import styled from 'styled-components';
 export const StyledForm = styled.form`
   max-width: 22rem;
   width: 100%;
-  margin: 2rem auto;
+  margin: 8.5rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
 
   h2 {
     margin-bottom: 1rem;

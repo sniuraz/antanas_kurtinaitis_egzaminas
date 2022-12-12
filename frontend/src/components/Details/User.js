@@ -90,6 +90,7 @@ const StyledProfile = styled.div`
   margin: 3rem;
   display: flex;
   justify-content: center;
+  margin-top: 8.5rem;
 `;
 
 const ProfileContainer = styled.div`
