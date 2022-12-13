@@ -37,13 +37,15 @@ export default function Header() {
             <Links>
               {auth.isAdmin ? (
                 <div>
-                  <Link to='/admin/products'>Admin</Link>
+                  <Link to='/admin/products'>{auth.name}</Link>
                 </div>
-              ) : null}
+              ) : (
+                <div>{auth.name}</div>
+              )}
               <div
                 onClick={() => {
                   dispatch(logoutUser(null));
-                  toast.warning('Vartotojas atsijungė', { position: 'bottom-center' });
+                  toast.warning(`${auth.name} atsijungė`, { position: 'bottom-center' });
                 }}
               >
                 Atsijungti
